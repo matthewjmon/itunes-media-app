@@ -1,0 +1,55 @@
+/* Placeholder color for light mode inputs */
+input::placeholder {
+  color: #6c757d; /* Gray placeholder for light mode */
+}
+
+/* Placeholder color for dark mode inputs */
+input.dark-mode-placeholder::placeholder {
+  color: #eee; /* Light gray/white for dark mode */
+}
+
+/* Remove default cancel (clear) button on search inputs for WebKit browsers */
+input[type="search"]::-webkit-search-cancel-button {
+  -webkit-appearance: none;
+  appearance: none;
+  display: none;
+}
+
+/* Override Bootstrap's default min-width on select inside the search form */
+form.d-flex.position-relative > select.category-select.form-select {
+  min-width: 4rem !important; /* Allow narrower selects */
+  max-width: 8rem !important;
+  width: auto !important;
+  padding-left: 0.5rem !important;
+  padding-right: 1.5rem !important;
+  flex-shrink: 1 !important;
+  box-sizing: border-box !important;
+}
+
+/* Responsive adjustments for very small screens (max-width 530px) */
+@media (max-width: 530px) {
+  form.d-flex.position-relative {
+    flex-wrap: wrap; /* Wrap inputs vertically */
+    gap: 0.5rem; /* Add spacing between wrapped items */
+  }
+
+  /* Make input full width on very small screens */
+  form.d-flex.position-relative > input.form-control {
+    flex: 1 1 100%;
+    max-width: 100% !important;
+  }
+
+  /* Make select full width on very small screens */
+  form.d-flex.position-relative > select.form-select {
+    flex: 1 1 100%;
+    max-width: 100% !important;
+  }
+
+  /* Specific styling for select inside search bar wrapper */
+  .search-bar-wrapper select.form-select {
+    width: auto !important;
+    max-width: 130px;
+    flex: 0 0 auto;
+    padding-right: 1.75rem; /* Ensure dropdown arrow is fully visible */
+  }
+}

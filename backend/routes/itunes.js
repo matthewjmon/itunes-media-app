@@ -5,15 +5,18 @@ const jwt = require('jsonwebtoken');
 
 const SECRET = process.env.JWT_SECRET;
 
+// POST /search - Searches iTunes API with provided term and media type
 router.post('/search', (req, res) => {
-  // Extract token from Authorization header: "Bearer <token>"
+  // Extract JWT token from Authorization header ("Bearer <token>")
   const authHeader = req.headers.authorization || '';
   const token = authHeader.split(' ')[1];
 
+  // Reject request if token is missing
   if (!token) {
     return res.status(401).json({ message: 'Missing token' });
   }
 
+  // Verify token validity and expiration
   try {
     jwt.verify(token, SECRET);
   } catch (error) {
@@ -22,10 +25,12 @@ router.post('/search', (req, res) => {
 
   const { term, media } = req.body;
 
+  // Validate required search term
   if (!term) {
     return res.status(400).json({ message: 'Search term is required' });
   }
 
+  // Call iTunes API with query parameters
   axios.get('https://itunes.apple.com/search', {
     params: {
       term,
@@ -34,6 +39,7 @@ router.post('/search', (req, res) => {
     },
   })
   .then(response => {
+    // Return array of results to client
     res.json(response.data.results);
   })
   .catch(error => {
@@ -43,4 +49,5 @@ router.post('/search', (req, res) => {
 });
 
 module.exports = router;
+
 

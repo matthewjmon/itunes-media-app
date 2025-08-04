@@ -1,0 +1,37 @@
+/* Remove default Bootstrap focus styles for inputs, selects, and checkboxes */
+input:focus,
+select:focus,
+.form-check-input:focus {
+  box-shadow: none;
+  outline: none;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+/* Light mode focus styles - neutral gray border and subtle glow */
+body:not(.bg-dark) input:focus,
+body:not(.bg-dark) select:focus {
+  border-color: #6c757d; /* Bootstrap secondary gray */
+  box-shadow: 0 0 0 0.15rem rgba(108, 117, 125, 0.25); /* softer gray glow */
+}
+
+/* Light mode focus styles for toggle switches */
+body:not(.bg-dark) .form-check-input:focus {
+  border-color: #6c757d;
+  box-shadow: 0 0 0 0.15rem rgba(108, 117, 125, 0.25);
+}
+
+/* Dark mode focus styles - lighter border and subtle white glow */
+body.bg-dark input:focus,
+body.bg-dark select:focus {
+  border-color: #bbb;
+  box-shadow: 0 0 0 0.15rem rgba(255, 255, 255, 0.15);
+}
+
+/* Dark mode focus styles for toggle switches */
+body.bg-dark .form-check-input:focus {
+  border-color: #ccc;
+  box-shadow: 0 0 0 0.15rem rgba(255, 255, 255, 0.25);
+}
+
+
+

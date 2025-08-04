@@ -1,5 +1,7 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
+import '../styles/SearchBar.css';
 
+// Media options for the category select dropdown
 const mediaOptions = [
   { label: 'All', value: 'all' },
   { label: 'Movie', value: 'movie' },
@@ -12,57 +14,84 @@ const mediaOptions = [
   { label: 'eBook', value: 'ebook' },
 ];
 
-// Debounce helper to limit API calls
+// Custom hook to debounce input values to limit rapid API calls
 function useDebounce(value, delay) {
   const [debouncedValue, setDebouncedValue] = React.useState(value);
-  
+
   useEffect(() => {
     const handler = setTimeout(() => setDebouncedValue(value), delay);
+
+    // Cleanup timeout if value or delay changes before timeout completes
     return () => clearTimeout(handler);
   }, [value, delay]);
-  
+
   return debouncedValue;
 }
 
 export default function SearchBar({ onSearch, darkMode }) {
+  // Controlled input for search term
   const [term, setTerm] = useState('');
+  // Controlled select for media category
   const [media, setMedia] = useState('all');
+  // Reference to input element for focus control
+  const inputRef = useRef(null);
 
-  const debouncedTerm = useDebounce(term, 500);  // 500ms debounce
+  // Debounced versions of term and media to reduce API calls frequency
+  const debouncedTerm = useDebounce(term, 500);
   const debouncedMedia = useDebounce(media, 500);
 
-  // Run search automatically when term or media changes after debounce delay
+  // Trigger search whenever debounced search term or media type changes
   useEffect(() => {
     if (debouncedTerm.trim() !== '') {
       onSearch(debouncedTerm, debouncedMedia);
     }
   }, [debouncedTerm, debouncedMedia, onSearch]);
 
+  // Handler to clear the search input and focus it
+  const clearInput = () => {
+    setTerm('');
+    inputRef.current.focus();
+  };
+
   return (
-    <form className="d-flex align-items-center" onSubmit={(e) => e.preventDefault()}>
+    <form
+      className="d-flex align-items-center position-relative flex-wrap w-100"
+      onSubmit={(e) => e.preventDefault()}
+    >
       <input
+        ref={inputRef}
         type="search"
         aria-label="Search iTunes media"
-        className={`form-control me-2 ${darkMode ? 'bg-dark text-light border-secondary' : ''}`}
+        className={`form-control me-2 ${
+          darkMode ? 'bg-dark text-light border-secondary dark-mode-placeholder' : ''
+        }`}
         placeholder="Search iTunes media..."
         value={term}
         onChange={(e) => setTerm(e.target.value)}
-        style={{ width: '300px', minWidth: '150px' }} // narrower input width
+        style={{
+          width: '100%',
+          minWidth: '150px',
+          maxWidth: '300px',
+          paddingRight: '2rem', // space for a clear button if added later
+        }}
       />
 
       <select
-        className={`form-select ${darkMode ? 'bg-dark text-light border-secondary' : ''}`}
+        className={`category-select form-select w-auto ${
+          darkMode ? 'bg-dark text-light border-secondary' : ''
+        }`}
         value={media}
         onChange={(e) => setMedia(e.target.value)}
-        style={{ width: '120px' }} // shorter dropdown
         aria-label="Select media type"
       >
         {mediaOptions.map(({ label, value }) => (
-          <option key={value} value={value}>{label}</option>
+          <option key={value} value={value}>
+            {label}
+          </option>
         ))}
       </select>
-      
-      {/* No search button */}
+
+      {/* Intentionally no search button — search triggers on input change */}
     </form>
   );
 }

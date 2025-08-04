@@ -1,0 +1,61 @@
+/* Responsive adjustments for screens smaller than large (lg) */
+
+@media (max-width: 991.98px) {
+  /* Push fixed header (search + dark mode toggle) down below the mobile navbar */
+  .transparent-header {
+    top: 56px !important;
+  }
+
+  /* Make SearchBar input full width and remove width constraints */
+  form.d-flex.position-relative > input.form-control {
+    width: 100% !important;
+    min-width: none !important;
+    max-width: none !important;
+  }
+
+  /* Adjust SearchBar select dropdown width and spacing */
+  form.d-flex.position-relative > select.form-select {
+    width: auto !important;
+    margin-top: 0.5rem;
+  }
+
+  /* Ensure mobile navbar is flex container and layered above sidebar and content */
+  nav.navbar.d-lg-none {
+    display: flex !important;
+    z-index: 1200;
+  }
+
+  /* Stack elements vertically and add top margin on smaller screens */
+  .stack-on-small {
+    position: static !important;
+    margin-top: 3rem;
+  }
+
+  /* Remove extra top padding from main content */
+  .main-content {
+    padding-top: 0 !important;
+  }
+
+  /* Remove left margin on card grid for small screens */
+  .card-grid {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 532px) {
+  /* Stack elements vertically and align to start on very small screens */
+  .stack-on-small {
+    flex-direction: column !important;
+    align-items: flex-start !important;
+  }
+}
+
+
+
+
+
+
+
+
+
+

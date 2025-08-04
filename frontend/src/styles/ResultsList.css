@@ -1,0 +1,40 @@
+.card-grid {
+  padding-bottom: 5rem; /* Space below grid for UI comfort */
+}
+
+.card-title,
+.card-text {
+  /* Prevent unwanted word breaks */
+  word-break: break-word;
+}
+
+.card-text {
+  /* Improve line spacing for better readability on smaller fonts */
+  line-height: 1.3;
+}
+
+.image-container {
+  width: 100%;
+  height: 12rem; /* Fixed height to keep cards uniform */
+  overflow: hidden;
+  border-top-left-radius: 0.25rem;
+  border-top-right-radius: 0.25rem;
+  position: relative;
+}
+
+.image-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; /* Maintain aspect ratio, crop if needed */
+  display: block;
+  transition: transform 0.3s ease; /* Smooth zoom on hover */
+}
+
+.image-container img:hover {
+  transform: scale(1.05);
+  cursor: pointer;
+}
+
+.empty-msg {
+  text-align: center; /* Center empty state message */
+}
