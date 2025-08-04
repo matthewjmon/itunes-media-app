@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import { Routes, Route, useNavigate } from 'react-router-dom';
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
 import SearchBar from './components/SearchBar';
 import ResultsList from './components/ResultsList';
 import FavouritesList from './components/FavouritesList';
@@ -16,6 +16,7 @@ export default function App() {
 
   const [toast, setToast] = useState({ show: false, message: '', variant: '' });
   const navigate = useNavigate();
+  const location = useLocation();
 
   const getId = (item) => item.trackId || item.collectionId;
 
@@ -41,6 +42,13 @@ export default function App() {
     }
   }, [darkMode]);
 
+  // Optional: Clear results when leaving search page to avoid stale flicker
+  useEffect(() => {
+    if (location.pathname !== '/') {
+      setResults([]);
+    }
+  }, [location]);
+
   const handleSearch = async (term, media) => {
     if (!jwtToken) {
       alert('Authorization token not available');
@@ -54,8 +62,16 @@ export default function App() {
           headers: { Authorization: `Bearer ${jwtToken}` },
         }
       );
-      setResults(res.data);
-      navigate('/');
+
+      const data = Array.isArray(res.data)
+        ? res.data
+        : Array.isArray(res.data.results)
+        ? res.data.results
+        : [];
+
+      setResults(data);
+
+      // Removed navigate('/') to prevent flicker/unnecessary remount
     } catch (error) {
       alert('Error fetching results: ' + (error.response?.data?.message || error.message));
     }
@@ -93,22 +109,34 @@ export default function App() {
     <>
       <Navbar darkMode={darkMode} />
 
-      {/* Transparent Search Bar */}
+      {/* Transparent Search Bar with Dark Mode Toggle on far right */}
       <div
-        className="fixed-top py-3 transparent-header"
+        className="fixed-top py-3 transparent-header d-flex align-items-center"
         style={{
           zIndex: 1050,
           borderBottom: '1px solid #ddd',
           left: '220px',
           width: 'calc(100% - 220px)',
-          paddingLeft: '0',
+          paddingLeft: 0,
+          paddingRight: '20px',
           backgroundColor: darkMode ? '#121212' : 'white',
           transition: 'background-color 0.3s ease',
+          gap: '1rem',
         }}
       >
-        <div className="container-fluid">
+        <div className="container-fluid px-0 d-flex align-items-center" style={{ flexGrow: 1 }}>
           <SearchBar onSearch={handleSearch} darkMode={darkMode} />
         </div>
+
+        <Form.Check
+          type="switch"
+          id="dark-mode-switch"
+          label={darkMode ? 'Dark Mode' : 'Light Mode'}
+          checked={darkMode}
+          onChange={() => setDarkMode(!darkMode)}
+          className={darkMode ? 'text-light' : ''}
+          style={{ whiteSpace: 'nowrap' }}
+        />
       </div>
 
       {/* Main Content */}
@@ -127,16 +155,7 @@ export default function App() {
           zIndex: 1, // lower than navbar (1100)
         }}
       >
-        <div className="d-flex justify-content-end mb-3">
-          <Form.Check
-            type="switch"
-            id="dark-mode-switch"
-            label={darkMode ? 'Dark Mode' : 'Light Mode'}
-            checked={darkMode}
-            onChange={() => setDarkMode(!darkMode)}
-            className={darkMode ? 'text-light' : ''}
-          />
-        </div>
+        {/* Removed dark mode toggle here */}
 
         <Routes>
           <Route
@@ -177,4 +196,3 @@ export default function App() {
     </>
   );
 }
-

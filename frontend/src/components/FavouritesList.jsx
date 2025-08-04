@@ -19,7 +19,12 @@ export default function FavouritesList({ favourites, onRemoveFavourite, darkMode
                 src={item.artworkUrl100.replace('100x100bb', '300x300bb')}
                 className="card-img-top"
                 alt={item.collectionName || item.trackName}
-                style={{ borderRadius: '4px' }}
+                style={{
+                  borderRadius: '4px',
+                  width: '100%',
+                  height: '300px',
+                  objectFit: 'cover',
+                }}
               />
               <div className="card-body d-flex flex-column">
                 <h5
@@ -45,3 +50,4 @@ export default function FavouritesList({ favourites, onRemoveFavourite, darkMode
     </div>
   );
 }
+
