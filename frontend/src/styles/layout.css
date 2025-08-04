@@ -1,0 +1,7 @@
+.transparent-header {
+  background-color: transparent !important;
+  backdrop-filter: blur(8px); /* optional glassy effect */
+  box-shadow: none;
+  border-bottom: none;
+}
+
