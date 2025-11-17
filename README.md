@@ -1,4 +1,5 @@
 # MediaQuest
+![MediaQuest Screenshot]("C:\Users\monag\OneDrive\Pictures\itunes-app.png")
 
 ## Description
 
@@ -6,19 +7,26 @@ MediaQuest is a full-stack web application that allows users to search for media
 
 ---
 
+# Tools and Technologies
+![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
+![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
+![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-CB4042?style=for-the-badge&logo=vite&logoColor=white)
+![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
+
+---
+
 ## Key Features
 
-- **Search Input:** Enter search terms and select media types to filter iTunes content.
+**Front-End Features:**
+- Responsive search UI built with React and Bootstrap
+- Dynamic results display with album cover, artist, and release date
+- Session-based favourites list
 
-- **Results Display:** View album/track info including album name, artist, album cover, and release date.
-
-- **Favourites List:** Add or remove items from a favourites list during your session (not persisted after refresh).
-
-- **Responsive UI:** Built with React and Bootstrap for a clean, mobile-friendly interface.
-
-- **Backend API:** Node.js/Express server proxies requests to the iTunes API and issues JWT tokens for secure communication.
-
-- **JWT Authorization:** All search requests require a valid JWT token.
+**Back-End Features:**
+- Node.js/Express API proxies iTunes requests
+- JWT-based authorization to secure API endpoints
+- Designed RESTful routes for scalable API structure
 
 ---
 
