@@ -1,7 +1,7 @@
 # MediaQuest
 *Full-stack iTunes media search application built with React & Node.js*
 
-![MediaQuest Screenshot](Images/itunes-app.png)
+![MediaQuest Screenshot](https://res.cloudinary.com/dyj8e4dsr/image/upload/v1763379402/itunes-app_qprhkn.png)
 
 ## Description
 
