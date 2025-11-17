@@ -1,5 +1,7 @@
 # MediaQuest
-![MediaQuest Screenshot]("C:\Users\monag\OneDrive\Pictures\itunes-app.png")
+*Full-stack iTunes media search application built with React & Node.js*
+
+![MediaQuest Screenshot](Images/itunes-app.png)
 
 ## Description
 
@@ -7,7 +9,8 @@ MediaQuest is a full-stack web application that allows users to search for media
 
 ---
 
-# Tools and Technologies
+**Tech Stack:** React, Node.js, Express, JWT, Bootstrap, Vite, iTunes API
+
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
@@ -27,6 +30,22 @@ MediaQuest is a full-stack web application that allows users to search for media
 - Node.js/Express API proxies iTunes requests
 - JWT-based authorization to secure API endpoints
 - Designed RESTful routes for scalable API structure
+
+---
+
+### My Role
+- Developed React frontend with responsive UI and Bootstrap
+- Built Node.js/Express backend with JWT-secured API proxy
+- Integrated iTunes Search API
+- Implemented session-based favourites list
+- Deployed full-stack application on Render
+
+---
+
+### Next Steps/Enhancements
+- Persist favourites list in a database
+- Add user authentication with login/signup
+- Improve search performance with caching
 
 ---
 
