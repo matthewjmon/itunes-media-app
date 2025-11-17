@@ -5,7 +5,7 @@
 
 ## Description
 
-MediaQuest is a full-stack web application that allows users to search for media content on the iTunes Store using the official iTunes Search API. Users can enter search terms and filter results by media type such as movies, podcasts, music, audiobooks, and more. The app features a responsive and user-friendly React frontend styled with Bootstrap, alongside a Node.js/Express backend that securely handles API requests with JWT authorization.
+MediaQuest is a full-stack React and Node.js application for searching the iTunes Store using Apple’s iTunes Search API. It features a responsive Bootstrap UI, a Node.js/Express backend that proxies and secures API requests with JWT, and a clean separation between client and server for scalable deployment.
 
 ---
 
@@ -14,7 +14,7 @@ MediaQuest is a full-stack web application that allows users to search for media
 ![React](https://img.shields.io/badge/React-61DAFB?style=for-the-badge&logo=react&logoColor=black)
 ![Node.js](https://img.shields.io/badge/Node.js-339933?style=for-the-badge&logo=node.js&logoColor=white)
 ![Express](https://img.shields.io/badge/Express-000000?style=for-the-badge&logo=express&logoColor=white)
-![Vite](https://img.shields.io/badge/Vite-CB4042?style=for-the-badge&logo=vite&logoColor=white)
+![Vite](https://img.shields.io/badge/Vite-646CFF?style=for-the-badge&logo=vite&logoColor=white)
 ![JWT](https://img.shields.io/badge/JWT-000000?style=for-the-badge&logo=jsonwebtokens&logoColor=white)
 
 ---
@@ -22,22 +22,22 @@ MediaQuest is a full-stack web application that allows users to search for media
 ## Key Features
 
 **Front-End Features:**
-- Responsive search UI built with React and Bootstrap
-- Dynamic results display with album cover, artist, and release date
-- Session-based favourites list
+- Responsive React UI styled with Bootstrap
+- Real-time search results with album art, artist, and release information
+- Session-based favourites list stored in state
 
 **Back-End Features:**
-- Node.js/Express API proxies iTunes requests
-- JWT-based authorization to secure API endpoints
-- Designed RESTful routes for scalable API structure
+- Node.js/Express server acting as a secure proxy to the iTunes API
+- JWT authorization protecting API routes
+- RESTful structure designed for scalability
 
 ---
 
 ### My Role
-- Developed React frontend with responsive UI and Bootstrap
-- Built Node.js/Express backend with JWT-secured API proxy
-- Integrated iTunes Search API
-- Implemented session-based favourites list
+- Built responsive UI using React and Bootstrap
+- Developed Express backend with JWT-secured API proxy
+- Integrated iTunes Search API with server-side validation
+- Added favourites list using React state and session behavior
 - Deployed full-stack application on Render
 
 ---
@@ -78,7 +78,7 @@ cd backend
 npm install
 ```
 
-**Create a .env file in the backend folder with these contents:**
+**Create a .env file in the backend folder:**
 `JWT_SECRET=your_secret_key_here`
 `PORT=5000`
 
@@ -164,8 +164,9 @@ itunes-media-search-app/
 
 This project is provided as-is without any warranty.
 
-## About me
+## Contact me
 
-**Name:** Matthew Monaghan
-**Email:** monaghanmatt18@gmail.com
-**GitHub:** https://github.com/matthewjmon
+- **Name:** Matthew Monaghan
+- **Email:** monaghanmatt18@gmail.com
+- **GitHub:** https://github.com/matthewjmon
+- **LinkedIn:** https://www.linkedin.com/in/matthew-monaghan-b9742b311/
